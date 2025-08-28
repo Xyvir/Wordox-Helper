@@ -1,1 +1,1 @@
-https://xyvir.github.io/WordoxHelp/
+https://xyvir.github.io/Wordox-Helper/
