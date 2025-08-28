@@ -3,10 +3,11 @@ name: Increment PWA Version
 on:
   push:
     branches:
-      - main # Or your default branch
+      - main
 
 jobs:
   increment-version:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -17,11 +18,8 @@ jobs:
 
       - name: Increment version
         run: |
-          # Extract the current version number using awk
           CURRENT_VERSION=$(awk -F"'" '/const VERSION/ {print $2}' sw.js)
-          # Increment the version number
           NEW_VERSION=$((CURRENT_VERSION + 1))
-          # Replace the old version with the new version in sw.js
           sed -i "s/const VERSION = '$CURRENT_VERSION'/const VERSION = '$NEW_VERSION'/" sw.js
 
       - name: Commit changes
