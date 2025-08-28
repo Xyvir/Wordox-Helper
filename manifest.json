@@ -1,0 +1,17 @@
+{
+  "name": "Wordox Helper",
+  "short_name": "WxHelp",
+  "description": "A simple, offline-capable helper for the game Wordox.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1e1e1e",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
