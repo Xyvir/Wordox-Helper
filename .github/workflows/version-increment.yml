@@ -3,7 +3,7 @@ name: Increment PWA Version
 on:
   push:
     branches:
-      - master # Or your default branch
+      - main # Or your default branch
 
 jobs:
   increment-version:
