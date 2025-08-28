@@ -4,10 +4,13 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'index.html'   # Only trigger when index.html changes
 
 jobs:
   increment-version:
-    if: github.actor != 'github-actions[bot]'
+    if: |
+      !contains(github.event.head_commit.message, 'Automated version bump')
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
