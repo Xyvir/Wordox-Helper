@@ -3,7 +3,7 @@ name: Increment PWA Version
 on:
   push:
     branches:
-      - main # Or your default branch
+      - master # Or your default branch
 
 jobs:
   increment-version:
@@ -12,15 +12,17 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
         with:
-          # Fetches all history so you can push back to the repository
           fetch-depth: 0
-          # This token is provided by Actions, you do not need to create your own
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Increment version
         run: |
-          # Use sed to find the line with "const VERSION" and increment the number
-          sed -i -E "s/(const VERSION = ')_([0-9]+)_(';)/\1$((\2+1))\3/" sw.js
+          # Extract the current version number using awk
+          CURRENT_VERSION=$(awk -F"'" '/const VERSION/ {print $2}' sw.js)
+          # Increment the version number
+          NEW_VERSION=$((CURRENT_VERSION + 1))
+          # Replace the old version with the new version in sw.js
+          sed -i "s/const VERSION = '$CURRENT_VERSION'/const VERSION = '$NEW_VERSION'/" sw.js
 
       - name: Commit changes
         run: |
