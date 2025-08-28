@@ -1,4 +1,4 @@
-const VERSION = '55';
+const VERSION = '56';
 
 self.addEventListener('install', (e) => {
   e.waitUntil(
