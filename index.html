@@ -187892,7 +187892,7 @@ ZZZS
 		const dictionary = dictionaryString.trim().split('\n').filter(w => w).map(word => {
 			return {
 				display: word, // The original word, e.g., "-FOEN-"
-				logic: word.replace(/-/g, '') // The word with hyphens removed, e.g., "FOEN"
+				logic: word.replace(/[-*]/g, '') // The word with hyphens removed, e.g., "FOEN"
 			};
 		});
 
